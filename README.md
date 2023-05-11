@@ -1,2 +1,3 @@
 # shrimp_shout_app
 
+### Thank you for visiting my project, it is still being built...
