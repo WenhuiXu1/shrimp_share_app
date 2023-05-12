@@ -1,11 +1,11 @@
 from flask import Blueprint
-from controllers.planets_controller import index, new, create, edit, update, delete
+from controllers.memes_controller import index, new, create, edit, update, delete
 
-planets_routes = Blueprint('pmemes_routes', __name__)
+memes_routes = Blueprint('memes_routes', __name__)
 
-planets_routes.route('/')(index)
-planets_routes.route('/memes/new')(new)
-planets_routes.route('/memes', methods = ['POST'])(create)
-planets_routes.route('/memes/<id>/edit')(edit)
-planets_routes.route('/memes/<id>', methods=["POST"])(update)
-planets_routes.route('/memes/<id>/delete', methods=["POST"])(delete)
+memes_routes.route('/')(index)
+memes_routes.route('/memes/new')(new)
+memes_routes.route('/memes', methods = ['POST'])(create)
+memes_routes.route('/memes/<id>/edit')(edit)
+memes_routes.route('/memes/<id>', methods=["POST"])(update)
+memes_routes.route('/memes/<id>/delete', methods=["POST"])(delete)
