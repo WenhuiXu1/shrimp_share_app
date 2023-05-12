@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Edit Memes</h1>
+<form action="/planets/{{ planet['id'] }}" method="POST">
+    <label for="">Name:</label>
+    <input type="text" name="name" value="{{ planet['name'] }}">
+
+    <label for="">Image URL:</label>
+    <input type="text" name="image_url" value="{{ planet['image_url'] }}">
+
+    <button>Edit A Meme</button>
+</form>
+{% endblock %}
