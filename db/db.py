@@ -1,11 +1,13 @@
 import psycopg2
 import psycopg2.extras
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
-DB_URL = "dbname=memes_app"
+db_URL = os.environ.get("DATABASE_URL")
 
 def sql(query, parameters=[]):
-    connection = psycopg2.connect(DB_URL) #open connection
+    connection = psycopg2.connect(db_URL) #open connection
     cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor) # we use the cursor to run SQL commands
     cursor.execute(query, parameters) #beginning of transaction
     results = cursor.fetchall()
