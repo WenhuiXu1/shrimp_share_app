@@ -2,19 +2,49 @@
 
 {% block content %}
 
-<h1>Memes Share App</h1>
+<h1>Shrimps Share App</h1>
+
+{% if current_user %}
+<h3>Welcome, {{ current_user['first_name']}}</h3>
 
 <section class="controls">
     <form action="/sessions/delete" method="POST">
         <button>Log out</button>
     </form>
+
+    <a href="/memes/new">Add a meme</a>
 </section>
 
-<section class="add-planet">
-    <span><a href="/memes/new">Add a meme</a></span>
+<!-- <section class="add-meme">
+        <span><a href="/memes/new">Add a meme</a></span>
+    </section> -->
+
+<section class="memes">
+    {% for meme in memes%}
+    <section class="meme">
+        <header>
+            <h2>{{meme['name']}}</h2>
+
+            <section class="controls">
+                <a href="/memes/{{meme[id]}}/edit">Edit</a>
+
+                <form action="/memes/{{meme['id']}}/delete" method="post">
+                    <button>Delete</button>
+                </form>
+
+            </section>
+
+        </header>
+        <img src="{{ meme['image_url']}}" alt="meme">
+    </section>
+    {% endfor%}
 </section>
 
+
+{% else %}
 <span><a href="/users/new">Sign up</a></span>
 <span><a href="/sessions/new">Log in</a></span>
+
+{% endif %}
 
 {% endblock %}
