@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if current_user %}
-<h1>Add Comments</h1>
+<h1>Add and view comments</h1>
 <a href="/">Home</a>
 <section class="memes">
     <section class="meme">
@@ -39,7 +39,7 @@
 <!-- <p>{{user['first_name']}}: {{ comment['content'] }}</p> -->
 </form>
 <form action="/comments/{{comment['id']}}/delete" method="POST">
-    <button>Delete this comment &#128070;</button>
+    <button>Delete&#128070;</button>
 </form>
 {% endfor %}
 

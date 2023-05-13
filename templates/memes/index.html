@@ -3,10 +3,12 @@
 {% block content %}
 
 <h1>Shrimps Share/Shout</h1>
-<p>Like or comment your fav meme :3</p>
+
 
 {% if current_user %}
 <h3>Welcome, {{ current_user['first_name']}}</h3>
+<p>Like or comment your fav meme :3</p>
+<p>or even better, upload your own!</p>
 
 <section class="controls">
     <form action="/sessions/delete" method="POST">
@@ -49,6 +51,7 @@
 
 
 {% else %}
+<h4>Sign up, log in and get VIPed!</h4>
 <span><a href="/users/new">Sign up</a></span>
 <span><a href="/sessions/new">Log in</a></span>
 
