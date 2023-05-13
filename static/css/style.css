@@ -10,7 +10,7 @@ body {
 
 .memes {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1.25rem;
     margin-top: 1.5rem;
 }
@@ -28,11 +28,15 @@ button {
     margin: 0.25rem;
 }
 
-.meme h2 {
+.meme h4 {
     /* apply these settings to stop text from overflowing when it's really long */
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
+}
+
+.meme {
+    background-color: #44AF69;
 }
 
 .meme img {

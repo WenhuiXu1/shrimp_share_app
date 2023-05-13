@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="/">Home Page</a>
+
+{% for comment in comment_by_id %}
+<p>{{ comment['content'] }}</p>
+{% endfor %}
+
+{% endblock %}

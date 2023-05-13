@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if current_user %}
+<h1>Add Comments</h1>
+<a href="/">Home</a>
+<section class="memes">
+    <section class="meme">
+        <header>
+            <h4>{{meme['name']}}</h4>
+        </header>
+        <section class="controls">
+            <a href="/memes/{{meme['id']}}/edit">Edit</a>
+
+            <form action="/memes/{{meme['id']}}/delete" method="POST">
+                <button>Delete</button>
+            </form>
+        </section>
+        <img src="{{ meme['image_url']}}" alt="meme">
+    </section>
+</section>
+
+<form action="/comments/{{meme['id']}}/add" method="POST">
+
+    <input type="hidden" name="user_id" value="{{ current_user['id']}}">
+    <p></p>
+
+    <label for="">Name:</label>
+    <input type="text" name="first_name" value="{{ current_user['first_name']}}">
+
+    <label for="">Comment:</label>
+    <input type="text" name="content">
+
+    <button>Add a comment</button>
+</form>
+<!-- {{comment_by_id}} -->
+{% for comment in comment_by_id %}
+<p>{{ comment['content'] }}</p>
+<!-- <p>{{user['first_name']}}: {{ comment['content'] }}</p> -->
+</form>
+<form action="/comments/{{comment['id']}}/delete" method="POST">
+    <button>Delete this comment &#128070;</button>
+</form>
+{% endfor %}
+
+{% else %}
+<p>Please log in to comment, thanks!</p>
+{% endif %}
+{% endblock %}

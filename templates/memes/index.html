@@ -24,18 +24,24 @@
     {% for meme in memes%}
     <section class="meme">
         <header>
-            <h2>{{meme['name']}}</h2>
-
-            <section class="controls">
-                <a href="/memes/{{meme['id']}}/edit">Edit</a>
-
-                <form action="/memes/{{meme['id']}}/delete" method="POST">
-                    <button>Delete</button>
-                </form>
-
-            </section>
-
+            <h4>{{meme['name']}}</h4>
         </header>
+        <section class="controls">
+            <a href="/memes/{{meme['id']}}/edit">Edit</a>
+
+            <form action="/memes/{{meme['id']}}/delete" method="POST">
+                <button>Delete</button>
+            </form>
+
+            <form action="/memes/{{ meme['id']}}/likes" method="POST">
+                <button>Like {{likes[meme['id']]}}</button>
+            </form>
+
+            <form action="/comments/{{ meme['id'] }}/new">
+                <button>Add/View comments</button>
+            </form>
+
+        </section>
         <img src="{{ meme['image_url']}}" alt="meme">
     </section>
     {% endfor%}
