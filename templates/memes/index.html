@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<h1>Shrimps Share App</h1>
+<h1>Shrimps Share/Shout</h1>
+<p>Like or comment your fav meme :3</p>
 
 {% if current_user %}
 <h3>Welcome, {{ current_user['first_name']}}</h3>
@@ -26,9 +27,9 @@
             <h2>{{meme['name']}}</h2>
 
             <section class="controls">
-                <a href="/memes/{{meme[id]}}/edit">Edit</a>
+                <a href="/memes/{{meme['id']}}/edit">Edit</a>
 
-                <form action="/memes/{{meme['id']}}/delete" method="post">
+                <form action="/memes/{{meme['id']}}/delete" method="POST">
                     <button>Delete</button>
                 </form>
 
