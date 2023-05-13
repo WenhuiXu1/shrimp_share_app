@@ -2,7 +2,7 @@ import psycopg2
 import psycopg2.extras
 import os
 
-DB_URL = os.environ.get("DATABSE_URL", "default key")
+DB_URL = "dbname=memes_app"
 
 def sql(query, parameters=[]):
     connection = psycopg2.connect(DB_URL) #open connection

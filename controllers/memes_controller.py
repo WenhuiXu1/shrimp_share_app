@@ -3,7 +3,7 @@ from models.memes import all_memes, get_meme, create_meme, update_meme, delete_m
 from services.session_info import current_user
 
 def index():
-    planets = all_memes()
+    memes = all_memes()
     return render_template ('memes/index.html', memes = memes, current_user = current_user())
 
 def new():
