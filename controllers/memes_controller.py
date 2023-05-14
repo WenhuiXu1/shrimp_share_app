@@ -2,14 +2,16 @@ from flask import render_template, request, redirect, session
 from models.memes import all_memes, get_meme, create_meme, update_meme, delete_meme, like_meme, total_likes, comment_meme, get_comments, get_comments_by_id, delete_a_comment
 from models.user import find_user_by_id
 from services.session_info import current_user
-from db.db import sql
+import os
 
 def index():
     memes = all_memes()
     likes = {}
     for meme in memes:
         likes[meme['id']] = total_likes(meme['id'])
-    return render_template ('memes/index.html', memes = memes, current_user = current_user(), likes = likes)
+    comments = get_comments()
+    comment_by_id = get_comments_by_id(meme['id'])
+    return render_template ('memes/index.html', memes = memes, current_user = current_user(), likes = likes, comments=comments, comment_by_id=comment_by_id)
 
 def new():
     return render_template('memes/new.html')
@@ -59,3 +61,17 @@ def create_comment(id):
 def delete_comment(id):
     delete_a_comment(id)
     return redirect('/')
+
+def upload():
+    # Get the uploaded file from the form data
+    image = request.files['image']
+
+    # Save the file to the server's file system
+    upload_folder = '/Users/wenhuixu/sei/projects/shrimp_share_app/images'
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)
+    if os.path.isfile(os.path.join(upload_folder, image.filename)):
+        return 'File already exists!'
+    else:
+        image.save(os.path.join(upload_folder, image.filename))
+        return 'File uploaded successfully!'

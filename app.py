@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
 
+
 app.register_blueprint(memes_routes)
 app.register_blueprint(users_routes)
 app.register_blueprint(sessions_routes)

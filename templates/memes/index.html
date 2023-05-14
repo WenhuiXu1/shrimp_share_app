@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% from models.memes import get_comments_by_id %}
 <h1>Shrimps Share/Shout</h1>
 
 
@@ -10,12 +10,19 @@
 <p>Like or comment your fav meme :3</p>
 <p>or even better, upload your own!</p>
 
+
 <section class="controls">
     <form action="/sessions/delete" method="POST">
         <button>Log out</button>
     </form>
 
-    <a href="/memes/new">Add a meme</a>
+    <a href="/memes/new">Add a meme from internet</a>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="image">Upload an image:</label>
+        <input type="file" name="image" id="image">
+        <input type="submit" value="Upload">
+    </form>
+
 </section>
 
 <!-- <section class="add-meme">
@@ -43,12 +50,30 @@
                 <button>Add/View comments</button>
             </form>
 
+            {% set comments_for_meme = get_comments_by_id(meme['id']) %}
+            {% if comments_for_meme %}
+            <ul class="comments">
+                {% for comment in comments_for_meme %}
+                <li>{{ comment['content'] }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </section>
         <img src="{{ meme['image_url']}}" alt="meme">
+
     </section>
     {% endfor%}
 </section>
-
+<p>-----------------</p>
+<p>All Comments:</p>
+{% for comment in comments %}
+<p>{{ comment['content'] }}</p>
+{% endfor %}
+<p>-----------------</p>
+<p>Individual comments:</p>
+{% for comment in comment_by_id %}
+<p>{{ comment['content'] }}</p>
+{% endfor %}
 
 {% else %}
 <h4>Sign up, log in and get VIPed!</h4>
