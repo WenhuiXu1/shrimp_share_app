@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Log in</h1>
-<form action="/sessions" method="POST">
+<h1 class="centered">Log in</h1>
+<section class="centered-container">
+    <form action="/sessions" method="POST">
 
-    <label for="">Email:</label>
-    <input type="text" name="email">
+        <label for="">Email:</label>
+        <input type="text" name="email">
 
-    <label for="">Password:</label>
-    <input type="password" name="password">
+        <label for=""> Password:</label>
+        <input type="password" name="password">
 
-    <button>Log in</button>
-</form>
+        <button>Log in</button>
+    </form>
+</section>
 {% endblock %}

@@ -33,8 +33,12 @@ INSERT INTO comments(user_id, meme_id, content) VALUES
 
 INSERT INTO memes(name, image_url)
 VALUES
-    ('Cute Shrimps', 'https://media.tenor.com/1Y_dkOOTBwAAAAAd/meh-idc.gif');
+    ('Meh', 'https://media.tenor.com/1Y_dkOOTBwAAAAAd/meh-idc.gif');
 
-UPDATE memes 
-SET name = 'Meh'
-WHERE id = '1';
+-- CREATE TABLE comments(
+--     id SERIAL PRIMARY KEY,
+--     user_id INTEGER REFERENCES users(id),
+--     user_name TEXT,
+--     meme_id INTEGER,
+--     content TEXT
+-- );

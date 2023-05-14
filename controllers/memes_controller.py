@@ -50,13 +50,18 @@ def comment_new(id):
     user = find_user_by_id(user_id)
     return render_template('comments/new.html', current_user=current_user(), meme = meme, comments = comments, comment_by_id = comment_by_id, user=user)
 
+# def get_meme_by_id(id):
+#     memes = all_memes()
+#     for meme in memes:
+#         if meme['id'] == id:
+#             meme_by_id = meme
+#     return meme_by_id
+
 def create_comment(id):
     content = request.form.get('content')
     # user_id = request.form.get('user_id')
     comment_meme(session['user_id'], id, content)
-    comments = get_comments()
-    comment_by_id = get_comments_by_id(id)
-    return render_template('comments/display.html', comments = comments, comment_by_id = comment_by_id)
+    return redirect('/')
 
 def delete_comment(id):
     delete_a_comment(id)

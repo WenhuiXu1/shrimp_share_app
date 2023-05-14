@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if current_user %}
-<h1>Add and view comments</h1>
-<p>Please add you name in your comment&#10084;</p>
-<a href="/">Home</a>
+<h1 class="centered">Add and view comments</h1>
+
+<section class="centered-container">
+    <p>Kindness is contagious.&#10084;</p>
+    <a href="/">Home</a>
+</section>
+
 <section class="memes">
     <section class="meme">
         <header>
-            <h4>{{meme['name']}}</h4>
+            <h2>{{meme['name']}}</h2>
         </header>
         <section class="controls">
             <a href="/memes/{{meme['id']}}/edit">Edit</a>
@@ -21,30 +24,27 @@
     </section>
 </section>
 
-<form action="/comments/{{meme['id']}}/add" method="POST">
+<section class="centered-container">
+    <form action="/comments/{{meme['id']}}/add" method="POST">
 
-    <input type="hidden" name="user_id" value="{{ current_user['id']}}">
-    <p></p>
+        <input type="hidden" name="user_id" value="{{ current_user['id']}}">
+        <p></p>
 
-    <label for="">Name:</label>
-    <input type="text" name="first_name" value="{{ current_user['first_name']}}">
+        <label for="">Name:</label>
+        <input type="text" name="first_name" value="{{ current_user['first_name']}}">
 
-    <label for="">Comment:</label>
-    <input type="text" name="content">
+        <label for="">Comment:</label>
+        <input type="text" name="content">
 
-    <button>Add a comment</button>
-</form>
-<!-- {{comment_by_id}} -->
-{% for comment in comment_by_id %}
-<p>{{ comment['content'] }}</p>
-<!-- <p>{{user['first_name']}}: {{ comment['content'] }}</p> -->
-</form>
-<form action="/comments/{{comment['id']}}/delete" method="POST">
-    <button>Delete&#128070;</button>
-</form>
-{% endfor %}
+        <button>Add a comment</button>
+    </form>
 
-{% else %}
-<p>Please log in to comment, thanks!</p>
-{% endif %}
+    {% for comment in comment_by_id %}
+    <p>User ID {{comment['user_id']}}: {{ comment['content'] }}</p>
+    </form>
+    <form action="/comments/{{comment['id']}}/delete" method="POST">
+        <button>&#128070; Delete &#10060;</button>
+    </form>
+    {% endfor %}
+</section>
 {% endblock %}
