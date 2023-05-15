@@ -17,8 +17,8 @@ CREATE TABLE users (
 
 CREATE TABLE likes(
     id SERIAL PRIMARY KEY,
-    user_id INTEGER,
-    meme_id INTEGER
+    user_id REFERENCES users(id),
+    meme_id INTEGER REFERENCES memes(id)
 );
 
 CREATE TABLE comments(
@@ -38,7 +38,7 @@ VALUES
 -- CREATE TABLE comments(
 --     id SERIAL PRIMARY KEY,
 --     user_id INTEGER REFERENCES users(id),
---     user_name TEXT,
---     meme_id INTEGER,
+--     user_name TEXT REFERENCES users(first_name),
+--     meme_id INTEGER REFERENCES memes(id),
 --     content TEXT
 -- );

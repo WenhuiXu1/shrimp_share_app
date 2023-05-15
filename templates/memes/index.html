@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="centered">Shrimps Share</h1>
-<h3 class="centered"><em>Share our best memories</em></h3>
-<section class="centered-container">
+
+
+
+<section>
     {% if current_user %}
+    <audio src="{{ url_for('static', filename='../static/you_got_a_friend_in_me.m4a') }}" controls autoplay></audio>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/{jfKfPfyJRdk}" frameborder="0"
+        allowfullscreen></iframe> -->
 
-    <h3>Welcome to shrimps shack, {{ current_user['first_name']}}</h3>
-
-    <section class="controls">
-        <form action="/sessions/delete" method="POST">
-            <button>Log out</button>
+    <section class="welcome">
+        <h3>Welcome to shrimps shack, {{ current_user['first_name']}}</h3>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="image">Upload an image:</label>
+            <br>
+            <input type="file" name="image" id="image">
+            <input type="submit" value="Upload">
         </form>
+        <!-- <form action="/sessions/delete" method="POST">
+            <button>Log out</button>
+        </form> -->
     </section>
-    <a href="/memes/new">Add a meme</a>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <label for="image">Upload an image:</label>
-        <input type="file" name="image" id="image">
-        <input type="submit" value="Upload">
-    </form>
 </section>
-
-<p class="centered">Like or comment on your favorite memes :3</p>
+<br>
+<br>
 <section class="memes">
     {% for meme in memes%}
     <section class="meme">
@@ -32,6 +35,8 @@
 
         <section class="meme-content">
             <section class="controls">
+                <a href="/memes/new">Add</a>
+
                 <a href="/memes/{{meme['id']}}/edit">Edit</a>
 
                 <form action="/memes/{{meme['id']}}/delete" method="POST">
@@ -42,9 +47,7 @@
                     <button>Like {{likes[meme['id']]}}</button>
                 </form>
 
-                <form action="/comments/{{ meme['id'] }}/new/2" method="POST">
-                    <button>Add/Delete comments</button>
-                </form>
+
             </section>
         </section>
 
@@ -53,25 +56,26 @@
         <section class="centered-container">
             <form action="/comments/{{ meme['id'] }}/new" method="POST">
                 <button>Add comment</button>
-                <textarea name="content" id="" cols="50" rows="3"></textarea>
-
+                <textarea name="content" id="" cols="30" rows="2"></textarea>
             </form>
         </section>
 
-        <section>
-            <ul class="comments">
-                {% for comment in comments %}
-                {% if comment['meme_id'] == meme['id']%}
-                <span>
-                    <li>UserID {{comment['user_id']}}: {{comment['content'] }}</li>
-                    <form action="/comments/{{comment['id']}}/delete" method="POST">
-                        <button>&#10007;</button>
-                    </form>
-                </span>
-                {% endif %}
-                {% endfor %}
-            </ul>
+        <section class="comments">
+            {% for comment in comments %}
+            {% if comment['meme_id'] == meme['id']%}
+            <section class="controls">
+                <p>ID {{comment['user_id']}}: {{comment['content'] }}</p>
+                <form action="/comments/{{comment['id']}}/delete" method="POST">
+                    <button>&#10007;</button>
+                </form>
+            </section>
+            {% endif %}
+            {% endfor %}
+
         </section>
+        <form action="/comments/{{ meme['id'] }}/new/2" method="POST">
+            <button>Delete comments</button>
+        </form>
 
     </section>
     {% endfor%}
@@ -79,12 +83,24 @@
 
 
 {% else %}
-<span><a href="/users/new">Sign up</a></span>
-<span><a href="/sessions/new">Log in</a></span>
+<br>
+<br>
+<br>
+<br>
+<h1 class="centered">Welcome to Shrimp Shack! </h1>
+<section class="centered-container">
+    <br>
+    <br>
+    <br>
+    <a href="/users/new">Sign up</a>
+    <a href="/sessions/new">Log in</a>
+</section>
 <section class="msg">
     <p class="centered"> Made with ❤️ for SEI62 </p>
     <p class="centered">Special K's Shrimp Shack</p>
 </section>
+
+<section class="confetti"></section>
 {% endif %}
 
 {% endblock %}

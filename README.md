@@ -2,31 +2,43 @@
 ## 💻 [Click here](https://shrimp-share-app.onrender.com/) to see my live project.
 
 
-<!-- The breifest description of my project and why you should use it.
-## 💻 [Click here](https://www.example.com/) to see my live project.
-## 📄 About
-- How to use my awesome project.
-- Download instructions (if relevant):
-$ git clone my-awesome-app
-$ cd my_awesome-app
-$ node app.js
+This is a CRUD app that is created to preserve the good memories of my time during GA bootcamp. Our cohort group name is "Special K's Shrimp Shack', so I named this app Shrimp Share, which allows our classmates up upload fun memes or pictures to record our time during the 3-month learning together. 
 
--Add in-app screenshots.
-## ✏️ Planning & Problem Solving
-- Talk about approach to the problem.
-- Add screenshots/drawings of doodles/plans during the planning phase.
-- Flow charts of app logic.
-![flowchat](https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+Some features of the app:
+- A RESTful app that performs CRUD operations
+- Using semantically HTML and CSS
+- Using wireframs and ER diagrams as planning tools
+
+## Wireframe
+![wireframe](images/wireframe.png)
+
+## ER Diagram
+![ERD](images/shrimp_share_app_data_model.png)
+
+
+## 📄 About
+How to use my app:
+```
+$ git clone my-app
+$ cd my_app
+$ python -m venv venv
+$ . venv/bin/activate
+$ pip install -r requirements
+$ flask run
+```
+
 ## 🚀 Cool tech
-- Programming languages
-- Libraries
-- Animations
-- Anything else you'd be proud to show your parent
-## 😱 Nugs to fix 💩
-- Anything a little broken
-- Anything a LOT broken
-- Buttons to not click to many times (cause its broken 😒)
-## 😭 Lessons learnt
-What I would do differently if I could wind back the clock...
+- Posgresql
+- Python
+- Flask
+- HTML
+- CSS
+
+## :bug: Bugs to fix
+- When the meme title or comment is too long it kind of push the content out of the box.
+
 ## ✅ Future features
-Cool things I would add if I can keep working on this -->
+- Make the app more responsive when views on small screens.
+- Create pages for users to see their own content.
+- Allow user to upload multiple pictures and scroll to the next picture.
+
