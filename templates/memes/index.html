@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="centered">Shrimps Share/Shout</h1>
-
+<h1 class="centered">Shrimps Share</h1>
+<h3 class="centered"><em>Share our best memories</em></h3>
 <section class="centered-container">
     {% if current_user %}
-    <h3>Welcome, {{ current_user['first_name']}}</h3>
-    <p>Like or comment your fav meme :3</p>
-    <p>or even better, upload your own!</p>
+
+    <h3>Welcome to shrimps shack, {{ current_user['first_name']}}</h3>
 
     <section class="controls">
         <form action="/sessions/delete" method="POST">
@@ -22,12 +21,15 @@
     </form>
 </section>
 
+<p class="centered">Like or comment on your favorite memes :3</p>
 <section class="memes">
     {% for meme in memes%}
     <section class="meme">
+
         <header>
             <h2>{{meme['name']}}</h2>
         </header>
+
         <section class="meme-content">
             <section class="controls">
                 <a href="/memes/{{meme['id']}}/edit">Edit</a>
@@ -40,30 +42,49 @@
                     <button>Like {{likes[meme['id']]}}</button>
                 </form>
 
-                <form action="/comments/{{ meme['id'] }}/new">
+                <form action="/comments/{{ meme['id'] }}/new/2" method="POST">
                     <button>Add/Delete comments</button>
                 </form>
             </section>
         </section>
 
         <img src="{{ meme['image_url']}}" alt="meme">
-        <ul class="comments">
-            {% for comment in comments %}
-            {% if comment['meme_id'] == meme['id']%}
-            <li>UserID {{comment['user_id']}}: {{comment['content'] }}</li>
-            {% endif %}
-            {% endfor %}
-        </ul>
+
+        <section class="centered-container">
+            <form action="/comments/{{ meme['id'] }}/new" method="POST">
+                <button>Add comment</button>
+                <textarea name="content" id="" cols="50" rows="3"></textarea>
+
+            </form>
+        </section>
+
+        <section>
+            <ul class="comments">
+                {% for comment in comments %}
+                {% if comment['meme_id'] == meme['id']%}
+                <span>
+                    <li>UserID {{comment['user_id']}}: {{comment['content'] }}</li>
+                    <form action="/comments/{{comment['id']}}/delete" method="POST">
+                        <button>&#10007;</button>
+                    </form>
+                </span>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+
     </section>
     {% endfor%}
 </section>
 
 
 {% else %}
-<h4>Sign up, log in and get VIPed!</h4>
 <span><a href="/users/new">Sign up</a></span>
 <span><a href="/sessions/new">Log in</a></span>
-
+<section class="msg">
+    <p class="centered"> Made with ❤️ for SEI62 </p>
+    <p class="centered">Special K's Shrimp Shack</p>
+</section>
 {% endif %}
 
 {% endblock %}

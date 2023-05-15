@@ -10,8 +10,8 @@ def index():
     for meme in memes:
         likes[meme['id']] = total_likes(meme['id'])
     comments = get_comments()
-    comment_by_id = get_comments_by_id(meme['id'])
-    return render_template ('memes/index.html', memes = memes, current_user = current_user(), likes = likes, comments=comments, comment_by_id=comment_by_id)
+    # comment_by_id = get_comments_by_id(meme['id'])
+    return render_template ('memes/index.html', memes = memes, current_user = current_user(), likes = likes, comments=comments)
 
 def new():
     return render_template('memes/new.html')
@@ -43,11 +43,22 @@ def like(id):
     return redirect('/')
 
 def comment_new(id):
+    content = request.form.get('content')
+    comment_meme(session['user_id'], id, content)
+    # meme = get_meme(id)
+    # comments = get_comments()
+    # comment_by_id = get_comments_by_id(id)
+    # user_id = session['user_id']
+    # user = find_user_by_id(user_id)
+    return redirect ('/')
+    # return render_template('comments/new.html', current_user=current_user(), meme = meme, comments = comments, comment_by_id = comment_by_id, user=user)
+
+def comment_new_2(id):
     meme = get_meme(id)
     comments = get_comments()
-    comment_by_id = get_comments_by_id(id)
     user_id = session['user_id']
     user = find_user_by_id(user_id)
+    comment_by_id = get_comments_by_id(id)
     return render_template('comments/new.html', current_user=current_user(), meme = meme, comments = comments, comment_by_id = comment_by_id, user=user)
 
 # def get_meme_by_id(id):

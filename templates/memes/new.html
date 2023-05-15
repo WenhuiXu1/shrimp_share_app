@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add Memes</h1>
-<form action="/memes" method="POST">
-    <label for="">Name:</label>
-    <input type="text" name="name">
+<h1 class="centered">Add Memes</h1>
+<section class="centered-container">
+    <form action="/memes" method="POST">
+        <label for="">Name:</label>
+        <input type="text" name="name">
 
-    <label for="">Image URL:</label>
-    <input type="text" name="image_url">
+        <label for="">Image URL:</label>
+        <input type="text" name="image_url">
 
-    <button>Add A meme</button>
-</form>
+        <button>Add A meme</button>
+    </form>
+</section>
 {% endblock %}
