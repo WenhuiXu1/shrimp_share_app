@@ -6,8 +6,6 @@ from routes.sessions_routes import sessions_routes
 from dotenv import load_dotenv
 # from flask_wtf.file import FileField
 
-# profile_pic = FileField("Profile Pic")
-
 load_dotenv()
 
 # db_url = os.environ.get('DATABASE_URL')
