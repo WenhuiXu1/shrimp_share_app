@@ -11,13 +11,8 @@
         allowfullscreen></iframe> -->
 
     <section class="welcome">
-        <h3>Welcome to shrimps shack, {{ current_user['first_name']}}</h3>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <label for="image">Upload an image:</label>
-            <br>
-            <input type="file" name="image" id="image">
-            <input type="submit" value="Upload">
-        </form>
+        <h3>Welcome to Shrimp Share, {{ current_user['first_name']}}</h3>
+
         <!-- <form action="/sessions/delete" method="POST">
             <button>Log out</button>
         </form> -->

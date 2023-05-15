@@ -13,21 +13,19 @@
 </head>
 
 <body>
-    <section class="1">
-        <nav>
-            <section class="controls">
-                <img class="logo" src="/static/images/shrimp_shack.png" alt="Logo">
-                <h1>Shrimps Share</h1>
-            </section>
-            <ul class="nav-list">
-                <li>
-                    <form action="/sessions/delete" method="POST">
-                        <button>Log out</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </section>
+    <nav>
+        <section class="controls">
+            <img class="logo" src="/static/images/shrimp_shack.png" alt="Logo">
+            <h1>Shrimps Share</h1>
+        </section>
+        <ul class="nav-list">
+            <li>
+                <form action="/sessions/delete" method="POST">
+                    <button>Log out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
     {% block content %}
     {% endblock %}
 </body>

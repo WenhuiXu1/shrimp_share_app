@@ -54,8 +54,8 @@ a {
     margin: 0.25rem;
 }
 
-.nav-list li {
-    text-decoration: none;
+li {
+    list-style: none;
 }
 
 
@@ -99,6 +99,7 @@ h2 {
 
 h3 {
     margin-top: 0.5rem;
+    color: #1DA1F2;
 }
 
 .meme {
