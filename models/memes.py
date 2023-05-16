@@ -1,7 +1,7 @@
 from db.db import sql
 
 def all_memes():
-    return sql('SELECT * FROM memes')
+    return sql('SELECT * FROM memes ORDER BY id')
 
 def get_meme(id):
   memes = sql("SELECT * FROM memes WHERE id = %s", [id])
@@ -27,7 +27,7 @@ def comment_meme(user_id, id, content):
     sql("INSERT INTO comments(user_id, meme_id, content) VALUES(%s, %s, %s) RETURNING *", [user_id, id, content])
 
 def get_comments():
-    all_comments = sql("SELECT * FROM comments")
+    all_comments = sql("SELECT * FROM comments ORDER BY id")
     return all_comments
 
 def get_comments_by_id(id):
@@ -36,3 +36,14 @@ def get_comments_by_id(id):
 
 def delete_a_comment(id):
     sql("delete from comments where id = %s returning *", [id])
+
+def get_latest_comments():
+    memes = all_memes()
+    latest_comments = []
+
+    for meme in memes:
+        comments = sql("SELECT * FROM comments WHERE meme_id=%s ORDER BY id DESC LIMIT 3", [meme['id']])
+        latest_comments += comments
+
+    return latest_comments
+

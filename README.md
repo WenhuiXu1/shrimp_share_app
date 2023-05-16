@@ -10,10 +10,10 @@ Some features of the app:
 - Using wireframs and ER diagrams as planning tools
 
 ## Wireframe
-![wireframe](images/wireframe.png)
+![wireframe](static/images/wireframe.png)
 
 ## ER Diagram
-![ERD](images/shrimp_share_app_data_model.png)
+![ERD](static/images/shrimp_share_app_data_model.png)
 
 
 ## 📄 About
@@ -36,6 +36,7 @@ $ flask run
 
 ## :bug: Bugs to fix
 - When the meme title or comment is too long it kind of push the content out of the box.
+- Trying to only display 3 comments on the main page but sometimes it works sometimes it doesn't.
 
 ## ✅ Future features
 - Make the app more responsive when views on small screens.

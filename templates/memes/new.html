@@ -15,12 +15,11 @@
 </section>
 
 <h1 class="centered">Upload an image:</h1>
-<section class="centered-container"></section>
-<form action="/upload" method="POST" enctype="multipart/form-data">
-    <label for="image"></label>
-    <input type="file" name="image" id="image">
-    <input type="submit" value="Upload">
-</form>
+<section class="centered-container">
+    <form action="/api/images" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+    </form>
 </section>
 
 

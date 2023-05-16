@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, session
-from models.memes import all_memes, get_meme, create_meme, update_meme, delete_meme, like_meme, total_likes, comment_meme, get_comments, get_comments_by_id, delete_a_comment
+from models.memes import all_memes, get_meme, create_meme, update_meme, delete_meme, like_meme, total_likes, comment_meme, get_comments, get_comments_by_id, delete_a_comment, get_latest_comments
 from models.user import find_user_by_id
 from services.session_info import current_user
 import os
@@ -9,7 +9,7 @@ def index():
     likes = {}
     for meme in memes:
         likes[meme['id']] = total_likes(meme['id'])
-    comments = get_comments()
+    comments = get_latest_comments()
     # comment_by_id = get_comments_by_id(meme['id'])
     return render_template ('memes/index.html', memes = memes, current_user = current_user(), likes = likes, comments=comments)
 
